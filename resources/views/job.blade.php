@@ -1,0 +1,130 @@
+@extends('layouts.front')
+
+@section('content')
+<!--Breadcrumb Banner Area Start-->
+<div class="breadcrumb-banner-area pt-20 bg-3 bg-opacity-black-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumb-text">
+                    <h2 class="text-center text-white uppercase mb-10">Careers</h2>
+                    <div class="breadcrumb-bar">
+                        <ul class="breadcrumb text-center m-0">
+                            <li class="text-white uppercase ml-15 mr-15"><a href="{{ url('/')}}">Home</a></li>
+                            <li class="text-white uppercase ml-15 mr-15">Careers</li>
+                        </ul>
+                    </div>
+                </div>
+                   @include('searchform')
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of Breadcrumb Banner Area-->
+<!--Start of Job Post Area-->
+<div class="job-post-area ptb-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center ">
+                    <h2 class="uppercase">Recent Jobs</h2>
+                    <div class="separator mt-35 mb-77">
+                        <span><img src="{{ url('assets/images/icons/1.png') }}" alt=""></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="job-post-container fix">
+
+                  @foreach ($ufjobs as $job)
+                    <div class="single-job-post fix">
+                        <div class="job-title col-4 pl-10">
+                                <span class="pull-left block mtb-17">
+                                    <a href="{{ url('job-details').'/'.$job->id }}"><img src="{{ url('assets/'. $job->company_logo) }}" alt=""></a>
+                                </span>
+                                <div class="fix pl-10 mt-29">
+                                  <a href="{{ url('job-details').'/'.$job->id }}">
+                                    <h4 class="mb-5">{{ $job->job_title }}</h4>
+                                    <h5>{{ $job->company_name }}</h5>
+                                  </a>
+                                </div>
+                        </div>
+                        <div class="address col-4 pl-30">
+                            <span class="mtb-30 block">{{ $job->job_location }}</span>
+                        </div>
+                        <div class="time-payment col-2 pl-60 text-center pt-22">
+                            <span style="font-family: 'Poppins', sans-serif" class="block mb-6">{{ $job->job_category }}</span>
+                            <a href="{{ url('job-details').'/'.$job->id }}" class="button button-red">CDI</a>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="single-sidebar-widget mb-48">
+                    <div class="sidebar-widget-title">
+                        <h4 class="mb-23">Categories</h4>
+                    </div>
+                    <ul class="sidebar-widget-lists light-gray-bg pt-17 pb-15">
+                        <li class="ptb-10"><a href="#" class="ml-30">Popular posts<span class="ml-9">(9)</span></a></li>
+                        <li class="ptb-10"><a href="#" class="ml-30">Productivity <span class="ml-9">(5)</span></a></li>
+                        <li class="ptb-10"><a href="#" class="ml-30">Resumes <span class="ml-9">(2)</span></a></li>
+                        <li class="ptb-10"><a href="#" class="ml-30">Women <span class="ml-9">(9)</span></a></li>
+                        <li class="ptb-10"><a href="#" class="ml-30">Quitting <span class="ml-9">(9)</span></a></li>
+                        <li class="ptb-10"><a href="#" class="ml-30">Popular posts <span class="ml-9">(7)</span></a></li>
+                        <li class="ptb-10"><a href="#" class="ml-30">Productivity <span class="ml-9">(2)</span></a></li>
+                        <li class="ptb-10"><a href="#" class="ml-30">Resumes <span class="ml-9">(5)</span></a></li>
+                    </ul>
+                </div>
+            </div>
+    </div>
+</div>
+<!-- End of Job Post Area -->
+<!--Start of Job Post Area-->
+<!--div class="job-post-area pb-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center ">
+                    <h2 class="uppercase">Featured Jobs</h2>
+                    <div class="separator mt-35 mb-77">
+                        <span><img src="{{ url('assets/images/icons/1.png') }}" alt=""></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="job-post-container fix">
+
+
+                @foreach ($fjobs as $job)
+                <div class="single-job-post fix">
+                    <div class="job-title col-4 pl-30">
+                        <span class="pull-left block mtb-17">
+                            <a href="#"><img src="{{ url('assets/'. $job->company_logo) }}" alt=""></a>
+                        </span>
+                        <div class="fix pl-30 mt-29">
+                            <h4 class="mb-5">{{ $job->job_title }}</h4>
+                            <h5><a href="#">{{ $job->company_name }}</a></h5>
+                        </div>
+                    </div>
+                    <div class="address col-4 pl-50">
+                        <span class="mtb-30 block">{{ $job->job_location }}</span>
+                    </div>
+                    <div class="time-payment col-2 pl-60 text-center pt-22">
+                        <span style="font-family: 'Poppins', sans-serif" class="block mb-6">{{ $job->job_category }}</span>
+                        <a  href="{{ url('job-details').'/'.$job->id }}" class="button button-red">CDD</a>
+                    </div>
+                </div>
+                @endforeach
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div-->
+<!-- End of Job Post Area -->
+@endsection
